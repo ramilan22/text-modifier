@@ -4,6 +4,17 @@ import path from 'path';
 import { stringify } from 'querystring';
 
 export default function handler(req:NextApiRequest, res:NextApiResponse) {
+  
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Replace '*' with the appropriate origin or set it to '*' to allow all origins
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+  
+  // Handle preflight request
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+  
   const directoryPaths = req.body;
   console.log(directoryPaths)
    // Replace with the actual directory path
