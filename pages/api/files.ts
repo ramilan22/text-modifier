@@ -40,6 +40,6 @@ export default function handler(req:NextApiRequest, res:NextApiResponse) {
     } catch (error) {
       console.error('Error changing file names:', error);
     }
-  }
+  }else{}
   }
   
